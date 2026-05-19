@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520">
+  <defs>
+    <radialGradient id="space" cx="46%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#61f3ff"/>
+      <stop offset=".28" stop-color="#0d8fb9"/>
+      <stop offset=".66" stop-color="#09243a"/>
+      <stop offset="1" stop-color="#030711"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" x2="1">
+      <stop offset="0" stop-color="#355c75"/>
+      <stop offset=".45" stop-color="#182a3b"/>
+      <stop offset="1" stop-color="#678aa0"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <rect width="520" height="520" fill="url(#space)"/>
+  <g opacity=".8">
+    <circle cx="74" cy="360" r="92" fill="#10223a" stroke="#4eefff" stroke-width="3"/>
+    <path d="M0 372c64 14 124 6 178-24" stroke="#80f7ff" stroke-width="3" fill="none"/>
+  </g>
+  <g fill="#dffbff" opacity=".9">
+    <circle cx="56" cy="40" r="3"/><circle cx="126" cy="72" r="2"/><circle cx="192" cy="32" r="4"/><circle cx="374" cy="78" r="3"/><circle cx="434" cy="42" r="2"/><circle cx="476" cy="146" r="3"/><circle cx="44" cy="210" r="2"/><circle cx="256" cy="92" r="2"/><circle cx="316" cy="18" r="3"/><circle cx="472" cy="308" r="2"/>
+  </g>
+  <path d="M346 76c-76 6-130 48-152 114-18 54-9 102 26 138 31 32 50 58 52 102h108c-9-52-4-91 26-116 48-40 70-91 60-144-11-62-54-98-120-94z" fill="url(#metal)" stroke="#83eaff" stroke-width="4"/>
+  <path d="M232 226c-25 10-38 25-40 46 16-1 28-7 39-18" fill="none" stroke="#99f6ff" stroke-width="6"/>
+  <path d="M284 116v308M332 94v330M378 112v296M418 158v172" stroke="#07101b" stroke-width="10" opacity=".82"/>
+  <path d="M284 116v308M332 94v330M378 112v296M418 158v172" stroke="#70eaff" stroke-width="2" opacity=".75"/>
+  <g fill="#ff8a35" filter="url(#glow)">
+    <rect x="340" y="126" width="18" height="18"/><rect x="420" y="174" width="16" height="16"/><rect x="302" y="354" width="18" height="18"/><rect x="382" y="396" width="15" height="15"/>
+  </g>
+  <g stroke="#ff8a35" stroke-width="3" opacity=".75">
+    <path d="M349 135h42v42h38"/>
+    <path d="M311 363h64v42"/>
+    <path d="M389 403h44"/>
+  </g>
+</svg>

@@ -1,0 +1,134 @@
+:root {
+  --bg: #040608;
+  --panel: rgba(12, 13, 18, 0.88);
+  --panel-strong: rgba(18, 20, 28, 0.96);
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(138, 162, 255, 0.38);
+  --ink: #f4f7fb;
+  --muted: #9ba7bd;
+  --accent: #8aa2ff;
+  --warning: #69e3ff;
+  --magenta: #85ffb8;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 60px rgba(0, 0, 0, 0.48);
+}
+
+body {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(138, 162, 255, 0.12), transparent 24%),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    #040608;
+  background-size: auto, 36px 36px, 36px 36px, auto;
+}
+
+body::before {
+  background:
+    repeating-linear-gradient(90deg, rgba(138, 162, 255, 0.08) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(0deg, rgba(105, 227, 255, 0.05) 0 1px, transparent 1px 18px);
+  opacity: 0.45;
+}
+
+main {
+  width: min(1180px, calc(100% - 28px));
+  padding: 14px 0 36px;
+}
+
+.site-header,
+.hero,
+.page-heading,
+.single-panel,
+.main-panel,
+.quote-panel,
+.feature-grid,
+.feature-card {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(16, 19, 28, 0.92), rgba(8, 10, 15, 0.88));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.site-header {
+  width: min(1180px, calc(100% - 28px));
+  margin: 14px auto 0;
+  padding: 16px 18px;
+}
+
+.nav a {
+  border-radius: 14px;
+  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.nav-indicator {
+  border-radius: 14px;
+  background: rgba(138, 162, 255, 0.12);
+}
+
+.hero,
+.page-heading {
+  min-height: auto;
+  padding: clamp(24px, 4vw, 42px);
+  place-items: start;
+  background:
+    linear-gradient(90deg, rgba(138, 162, 255, 0.1), transparent),
+    linear-gradient(180deg, rgba(16, 19, 28, 0.92), rgba(8, 10, 15, 0.88));
+}
+
+.compass-frame::before,
+.compass-frame::after,
+.digital-frame::before,
+.digital-frame::after,
+.ai-core {
+  display: none;
+}
+
+.hero-copy,
+.page-heading {
+  padding: 0;
+  text-align: left;
+}
+
+h1,
+.feature-title,
+blockquote {
+  font-family: var(--font-display);
+}
+
+h1 {
+  font-size: clamp(2rem, 4.4vw, 4.1rem);
+  line-height: 1.02;
+  text-shadow: none;
+}
+
+h1 span:first-child::after {
+  display: none;
+}
+
+.content-grid,
+.two-column,
+.feature-grid {
+  gap: 14px;
+}
+
+.feature-grid {
+  grid-template-columns: 1.2fr 1fr 1fr;
+  padding: 14px;
+}
+
+.feature-card {
+  min-height: 390px;
+  grid-template-rows: 180px auto auto;
+}
+
+.quote-panel-inline blockquote {
+  font-size: clamp(1rem, 1.25vw, 1.28rem);
+}
+
+@media (max-width: 980px) {
+  .content-grid,
+  .two-column,
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
