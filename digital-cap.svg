@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <defs>
+    <radialGradient id="floor" cx="50%" cy="68%" r="70%">
+      <stop offset="0" stop-color="#79ffff" stop-opacity=".5"/>
+      <stop offset=".35" stop-color="#0fc9ff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#020817" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="900" height="520" fill="#020817"/>
+  <rect width="900" height="520" fill="url(#floor)"/>
+  <g stroke="#19dfff" stroke-width="2" opacity=".28">
+    <path d="M0 434h900"/>
+    <path d="M0 470h900"/>
+    <path d="M0 506h900"/>
+    <path d="M110 520 370 0"/>
+    <path d="M240 520 420 0"/>
+    <path d="M370 520 465 0"/>
+    <path d="M530 520 435 0"/>
+    <path d="M660 520 480 0"/>
+    <path d="M790 520 530 0"/>
+  </g>
+  <g fill="#b7fbff" opacity=".75">
+    <circle cx="82" cy="340" r="6"/>
+    <circle cx="164" cy="404" r="4"/>
+    <circle cx="226" cy="318" r="7"/>
+    <circle cx="716" cy="332" r="6"/>
+    <circle cx="792" cy="404" r="4"/>
+    <circle cx="828" cy="286" r="7"/>
+    <circle cx="452" cy="118" r="5"/>
+  </g>
+  <g filter="url(#blur)" opacity=".85">
+    <path d="M192 246 454 144l254 102-254 102z" fill="#24e7ff"/>
+    <path d="M312 296c76 46 206 46 284 0v76c-74 54-210 54-284 0z" fill="#24e7ff"/>
+  </g>
+  <path d="M192 246 454 144l254 102-254 102z" fill="#0b2d49" stroke="#83fbff" stroke-width="5"/>
+  <path d="M312 296c76 46 206 46 284 0v76c-74 54-210 54-284 0z" fill="#08243c" stroke="#83fbff" stroke-width="4"/>
+  <path d="M454 246v122" stroke="#83fbff" stroke-width="4"/>
+  <circle cx="454" cy="246" r="14" fill="#83fbff"/>
+  <path d="M454 246 714 328" stroke="#83fbff" stroke-width="4"/>
+  <circle cx="726" cy="332" r="13" fill="#ffcf5a"/>
+  <path d="M726 346c-20 34-24 58-10 86" stroke="#ffcf5a" stroke-width="5" fill="none"/>
+</svg>
