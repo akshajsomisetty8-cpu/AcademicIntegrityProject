@@ -4,10 +4,21 @@
   var pages = ["index.html", "problem.html", "root-causes.html", "solutions.html", "conclusion.html", "citations.html"];
   var currentFile = window.location.pathname.split("/").pop() || "index.html";
   var pageIndex = Math.max(0, pages.indexOf(currentFile));
+  var isContentPage = pages.indexOf(currentFile) !== -1;
   var themes = {
     neural: "themes/neural-circuit.css",
     terminal: "themes/terminal-core.css",
-    holo: "themes/holographic-lab.css"
+    holo: "themes/holographic-lab.css",
+    tribunal: "themes/ai-tribunal.css",
+    warning: "themes/digital-warning.css",
+    blueprint: "themes/neural-blueprint.css",
+    cyberglass: "themes/academic-cyberglass.css",
+    archive: "themes/quantum-archive.css",
+    console: "themes/ai-ethics-console.css",
+    classroom: "themes/synthetic-classroom.css",
+    glitch: "themes/glitch-persuasion.css",
+    editorial: "themes/editorial-tech.css",
+    refined: "themes/holo-refined.css"
   };
 
   document.body.dataset.pageIndex = String(pageIndex);
@@ -15,17 +26,29 @@
   document.body.style.setProperty("--page-index", pageIndex);
   document.body.style.setProperty("--page-ratio", pages.length > 1 ? pageIndex / (pages.length - 1) : 0);
 
+  if (isContentPage) {
+    window.localStorage.setItem("lastContentPage", currentFile);
+  }
+
   if (themes[design]) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = themes[design] + "?v=45";
+    link.href = themes[design] + "?v=55";
     link.id = "theme-stylesheet";
     document.head.appendChild(link);
 
-    document.querySelectorAll('a[href$=".html"]').forEach(function (anchor) {
+    document.querySelectorAll('a[href*=".html"]').forEach(function (anchor) {
       var url = new URL(anchor.getAttribute("href"), window.location.href);
       url.searchParams.set("design", design);
       anchor.setAttribute("href", url.pathname.split("/").pop() + url.search);
+    });
+  }
+
+  if (currentFile === "designs.html") {
+    var returnPage = params.get("from") || window.localStorage.getItem("lastContentPage") || "problem.html";
+    if (pages.indexOf(returnPage) === -1) returnPage = "problem.html";
+    document.querySelectorAll(".mockup-card[data-design]").forEach(function (anchor) {
+      anchor.setAttribute("href", returnPage + "?design=" + anchor.dataset.design);
     });
   }
 

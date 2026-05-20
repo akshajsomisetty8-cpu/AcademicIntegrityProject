@@ -1,0 +1,128 @@
+:root {
+  --bg: #110606;
+  --panel: rgba(28, 9, 8, 0.9);
+  --panel-strong: rgba(39, 12, 9, 0.96);
+  --line: rgba(255, 126, 57, 0.3);
+  --line-strong: #ffb133;
+  --ink: #fff2e6;
+  --muted: #e7bda7;
+  --accent: #ff3b2f;
+  --warning: #ffb133;
+  --magenta: #ff6a00;
+  --shadow: 0 0 50px rgba(255, 68, 38, 0.18);
+  --font-display: "Montserrat";
+  --font-serif: "Merriweather";
+  --font-ui: "Anta";
+  --font-body: "Inter";
+  --font-digital: "Anta";
+}
+
+body {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 177, 51, 0.07) 0 2px, transparent 2px 38px),
+    repeating-linear-gradient(0deg, rgba(255, 59, 47, 0.045) 0 2px, transparent 2px 38px),
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 59, 47, 0.22), transparent 26%),
+    #110606;
+}
+
+.site-header,
+.single-panel,
+.main-panel,
+.quote-panel,
+.feature-card,
+.feature-grid,
+.page-heading,
+.hero {
+  border-color: rgba(255, 177, 51, 0.36);
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, rgba(255, 59, 47, 0.14), rgba(255, 177, 51, 0.055)),
+    var(--panel);
+}
+
+h1 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.eyebrow,
+.rationale-heading {
+  color: var(--accent);
+}
+
+.route-dot.is-lit,
+.nav-indicator {
+  background: linear-gradient(90deg, var(--accent), var(--warning));
+}
+
+.quote-panel {
+  box-shadow: inset 0 0 0 1px rgba(255, 59, 47, 0.28), 0 0 44px rgba(255, 59, 47, 0.16);
+}
+
+body[data-page-index="0"] {
+  --accent: #58caff;
+  --warning: #102a55;
+  --magenta: #8ccfff;
+  --line-strong: #58caff;
+  --page-image: url("../assets/theme-ai-corridor.png");
+  --page-overlay: linear-gradient(90deg, rgba(3, 10, 22, 0.68), rgba(12, 44, 78, 0.2), rgba(3, 10, 22, 0.9));
+}
+
+body[data-page-index="1"] {
+  --accent: #19eaff;
+  --warning: #ff4edb;
+  --magenta: #8a46ff;
+  --line-strong: #19eaff;
+  --page-image: url("../assets/theme-ai-mosaic.png");
+  --page-overlay: linear-gradient(90deg, rgba(8, 3, 13, 0.72), rgba(25, 234, 255, 0.12), rgba(8, 3, 13, 0.92));
+}
+
+body[data-page-index="2"] {
+  --accent: #7ee6ff;
+  --warning: #ff9b75;
+  --magenta: #213f66;
+  --line-strong: #7ee6ff;
+  --page-image: url("../assets/theme-robot-library.png");
+  --page-overlay: linear-gradient(90deg, rgba(5, 14, 24, 0.72), rgba(93, 191, 223, 0.12), rgba(5, 14, 24, 0.9));
+}
+
+body[data-page-index="3"] {
+  --accent: #7aa2ff;
+  --warning: #ffffff;
+  --magenta: #467fc7;
+  --line-strong: #ffffff;
+  --page-image: url("../assets/theme-solutions-gears-bg.svg");
+  --page-overlay: linear-gradient(90deg, rgba(20, 47, 90, 0.72), rgba(255, 255, 255, 0.12), rgba(20, 47, 90, 0.92));
+}
+
+body[data-page-index="4"] {
+  --accent: #55f2ff;
+  --warning: #b07cff;
+  --magenta: #ff5ecb;
+  --line-strong: #55f2ff;
+  --button-start: #55f2ff;
+  --button-mid: #b07cff;
+  --button-end: #ff5ecb;
+  --button-ink: #10051a;
+  --button-glow: #ff5ecb;
+  --page-image: url("../assets/theme-digital-classroom.png");
+  --page-overlay: linear-gradient(90deg, rgba(9, 15, 38, 0.7), rgba(98, 70, 172, 0.18), rgba(9, 15, 38, 0.92));
+}
+
+body[data-page-index="5"] {
+  --accent: #ff3b2f;
+  --warning: #ffb133;
+  --magenta: #ff6a00;
+  --page-image: none;
+  --page-overlay: repeating-linear-gradient(90deg, rgba(255, 177, 51, 0.08) 0 2px, transparent 2px 38px);
+}
+
+.hero,
+.page-heading {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 34px), calc(100% - 34px) 100%, 0 100%);
+  background:
+    var(--page-overlay),
+    linear-gradient(180deg, rgba(17, 6, 6, 0.2), rgba(17, 6, 6, 0.92)),
+    var(--page-image) center / cover,
+    #110606;
+}

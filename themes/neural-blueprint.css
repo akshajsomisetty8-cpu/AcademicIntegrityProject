@@ -1,0 +1,83 @@
+:root {
+  --bg: #06101b;
+  --panel: rgba(7, 22, 34, 0.86);
+  --panel-strong: rgba(10, 30, 44, 0.94);
+  --line: rgba(116, 231, 219, 0.28);
+  --line-strong: #74e7db;
+  --ink: #f2fff9;
+  --muted: #b9d9d0;
+  --accent: #74e7db;
+  --warning: #f7df87;
+  --magenta: #6aa7ff;
+  --shadow: 0 0 54px rgba(116, 231, 219, 0.17);
+  --font-display: "Montserrat";
+  --font-serif: "Merriweather";
+  --font-ui: "Anta";
+  --font-body: "Inter";
+  --font-digital: "Anta";
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% 36%, rgba(247, 223, 135, 0.16), transparent 32%),
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(116, 231, 219, 0.2), transparent 24%),
+    linear-gradient(rgba(116, 231, 219, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 231, 219, 0.055) 1px, transparent 1px),
+    #06101b;
+  background-size: auto, auto, 52px 52px, 52px 52px, auto;
+}
+
+body::before {
+  background:
+    linear-gradient(125deg, transparent 0 44%, rgba(126, 220, 255, 0.12) 44.2% 44.7%, transparent 45%),
+    linear-gradient(35deg, transparent 0 58%, rgba(126, 220, 255, 0.1) 58.2% 58.6%, transparent 59%);
+}
+
+.site-header,
+.single-panel,
+.main-panel,
+.quote-panel,
+.feature-grid,
+.feature-card,
+.page-heading,
+.hero {
+  border-radius: 0;
+  background:
+    linear-gradient(rgba(126, 220, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 220, 255, 0.045) 1px, transparent 1px),
+    var(--panel);
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.hero,
+.page-heading {
+  background:
+    linear-gradient(180deg, rgba(6, 16, 27, 0.12), rgba(6, 16, 27, 0.92)),
+    url("../assets/theme-global-network.png") center / cover;
+}
+
+.hero::before,
+.page-heading::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(247, 223, 135, 0.16), transparent 0 22%, rgba(116, 231, 219, 0.08) 23% 36%, transparent 37%),
+    linear-gradient(110deg, transparent 0 39%, rgba(116, 231, 219, 0.18) 39.4% 39.8%, transparent 40.2%),
+    linear-gradient(35deg, transparent 0 62%, rgba(247, 223, 135, 0.14) 62.4% 62.8%, transparent 63.2%);
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+h1 {
+  font-family: var(--font-serif);
+}
+
+.content-grid,
+.two-column {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.quote-panel {
+  border-top: 6px solid var(--accent);
+}

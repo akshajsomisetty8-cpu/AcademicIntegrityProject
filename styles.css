@@ -16,6 +16,7 @@
   --font-body: "Inter";
   --font-digital: "Anta";
   --font-accent: "Cormorant Garamond";
+  --font-quote: "Magnolia Script", "Binate", Georgia, "Cormorant Garamond", serif;
 }
 
 * {
@@ -76,9 +77,27 @@ body {
 .ambient-field span:nth-child(3) {
   left: var(--cursor-x);
   top: var(--cursor-y);
-  width: 20vw;
-  opacity: 0.12;
+  width: 30vw;
+  opacity: 0.24;
+  filter: blur(54px);
   background: var(--magenta);
+}
+
+.ambient-field::after {
+  content: "";
+  position: absolute;
+  left: var(--cursor-x);
+  top: var(--cursor-y);
+  width: min(520px, 46vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--accent), transparent 54%) 0%, color-mix(in srgb, var(--warning), transparent 78%) 28%, color-mix(in srgb, var(--magenta), transparent 88%) 46%, transparent 72%);
+  filter: blur(28px);
+  mix-blend-mode: screen;
+  opacity: 0.78;
 }
 
 body::before {
@@ -372,6 +391,7 @@ h3 {
 }
 
 .motion-panel {
+  position: relative;
   opacity: 0;
   clip-path: inset(18px 0 18px 0 round 18px);
   filter: blur(6px);
@@ -390,6 +410,22 @@ h3 {
 .motion-panel::selection {
   background: var(--accent);
   color: var(--bg);
+}
+
+.motion-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--glow-x) var(--glow-y), color-mix(in srgb, var(--accent), transparent 56%), color-mix(in srgb, var(--warning), transparent 86%) 20%, transparent 46%);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.motion-panel:hover::after {
+  opacity: 0.58;
 }
 
 .single-panel {
@@ -729,6 +765,30 @@ blockquote {
   line-height: 1.25;
 }
 
+body blockquote {
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.quote-panel blockquote + p {
+  display: inline-block;
+  margin: 0 0 22px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 64%);
+  color: color-mix(in srgb, var(--warning), white 30%);
+  background: color-mix(in srgb, var(--panel-strong), var(--accent) 10%);
+  font-family: var(--font-ui);
+  font-size: clamp(0.88rem, 1.04vw, 1rem);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px color-mix(in srgb, var(--accent), transparent 52%);
+}
+
 .inline-quote {
   margin: 22px 0;
   padding: 22px;
@@ -742,6 +802,344 @@ blockquote {
 
 .design-card {
   min-height: 420px;
+}
+
+.mockups-page {
+  padding-bottom: 70px;
+}
+
+.mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.6vw, 34px);
+  margin: clamp(30px, 5vw, 58px) 0;
+}
+
+.mockup-card {
+  --m-bg: #0a0a09;
+  --m-panel: rgba(255, 255, 255, 0.08);
+  --m-line: rgba(255, 255, 255, 0.28);
+  --m-ink: #f7f2e7;
+  --m-muted: rgba(247, 242, 231, 0.68);
+  --m-one: #21e6ff;
+  --m-two: #f5c716;
+  display: grid;
+  gap: 18px;
+  padding: clamp(18px, 2.5vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--m-line), transparent 10%);
+  background:
+    radial-gradient(circle at 16% 14%, color-mix(in srgb, var(--m-one), transparent 72%), transparent 30%),
+    radial-gradient(circle at 84% 24%, color-mix(in srgb, var(--m-two), transparent 76%), transparent 30%),
+    rgba(8, 10, 12, 0.88);
+  box-shadow: 0 0 38px color-mix(in srgb, var(--m-one), transparent 86%);
+}
+
+.mockup-preview {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid var(--m-line);
+  background:
+    linear-gradient(color-mix(in srgb, var(--m-one), transparent 92%) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--m-one), transparent 92%) 1px, transparent 1px),
+    var(--m-bg);
+  background-size: 34px 34px;
+}
+
+.mockup-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 44%, color-mix(in srgb, var(--m-two), transparent 82%), transparent 30%),
+    linear-gradient(transparent 50%, rgba(255, 255, 255, 0.03) 50%);
+  background-size: auto, 100% 5px;
+  pointer-events: none;
+}
+
+.mockup-nav {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 0.72fr 0.9fr;
+  gap: 8px;
+  padding: 16px;
+  border-bottom: 1px solid var(--m-line);
+  background: color-mix(in srgb, var(--m-bg), #000 18%);
+}
+
+.mockup-nav span {
+  height: 10px;
+  border: 1px solid var(--m-line);
+  background: linear-gradient(90deg, var(--m-one), var(--m-two));
+  opacity: 0.78;
+}
+
+.mockup-hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  min-height: 158px;
+  padding: 24px;
+  text-align: center;
+}
+
+.mockup-hero span {
+  color: var(--m-two);
+  font-family: var(--font-digital);
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.mockup-hero strong {
+  display: block;
+  margin: 12px auto 0;
+  max-width: 470px;
+  color: var(--m-ink);
+  font-family: var(--m-title-font, var(--font-serif));
+  font-size: clamp(2rem, 4.2vw, 3.35rem);
+  line-height: 1.02;
+  text-shadow: 0 0 24px color-mix(in srgb, var(--m-two), transparent 64%);
+}
+
+.mockup-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: var(--m-columns, 1fr 0.86fr);
+  gap: 18px;
+  padding: 18px;
+}
+
+.mockup-body p,
+.mockup-body blockquote {
+  min-height: 94px;
+  margin: 0;
+  border: 1px solid var(--m-line);
+  background: var(--m-panel);
+  box-shadow: inset 0 0 24px color-mix(in srgb, var(--m-one), transparent 88%);
+}
+
+.mockup-body p::before,
+.mockup-body blockquote::before {
+  content: "";
+  display: block;
+  width: 72%;
+  height: 10px;
+  margin: 18px 16px 10px;
+  background: var(--m-ink);
+  opacity: 0.72;
+}
+
+.mockup-body p::after,
+.mockup-body blockquote::after {
+  content: "";
+  display: block;
+  width: 52%;
+  height: 10px;
+  margin: 0 16px;
+  background: var(--m-muted);
+}
+
+.mockup-card h2 {
+  margin: 0;
+  color: var(--m-ink);
+  font-family: var(--m-title-font, var(--font-display));
+  font-size: clamp(1.45rem, 2vw, 2rem);
+}
+
+.mockup-card p {
+  margin: 0;
+}
+
+.mockup-tribunal {
+  --m-bg: #06070a;
+  --m-panel: rgba(38, 247, 255, 0.08);
+  --m-line: rgba(38, 247, 255, 0.56);
+  --m-ink: #fff8dd;
+  --m-muted: rgba(201, 213, 207, 0.68);
+  --m-one: #26f7ff;
+  --m-two: #ffd240;
+  --m-title-font: var(--font-serif);
+}
+
+.mockup-tribunal .mockup-preview {
+  background:
+    linear-gradient(90deg, rgba(38, 247, 255, 0.62), transparent 1px) 50% 0 / 1px 100% no-repeat,
+    linear-gradient(0deg, rgba(255, 210, 64, 0.48), transparent 1px) 0 50% / 100% 1px no-repeat,
+    radial-gradient(circle at 50% 50%, rgba(38, 247, 255, 0.24), transparent 0 16%, rgba(255, 210, 64, 0.1) 17% 30%, rgba(255, 75, 216, 0.08) 31% 40%, transparent 41%),
+    linear-gradient(30deg, rgba(38, 247, 255, 0.08) 12%, transparent 12.5% 87%, rgba(38, 247, 255, 0.08) 87.5%),
+    linear-gradient(150deg, rgba(255, 210, 64, 0.08) 12%, transparent 12.5% 87%, rgba(255, 210, 64, 0.08) 87.5%),
+    repeating-linear-gradient(90deg, rgba(38, 247, 255, 0.06) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, rgba(255, 210, 64, 0.05) 0 1px, transparent 1px 28px),
+    #06070a;
+  background-size: auto, auto, auto, 52px 90px, 52px 90px, auto, auto, auto;
+}
+
+.mockup-tribunal .mockup-preview::after {
+  content: "EVIDENCE // AI";
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: rgba(38, 247, 255, 0.24);
+  font-family: var(--font-digital);
+  font-size: 2.8rem;
+  letter-spacing: 0.14em;
+  transform: rotate(-8deg);
+}
+
+.mockup-warning {
+  --m-bg: #140a08;
+  --m-panel: rgba(255, 77, 41, 0.11);
+  --m-line: rgba(255, 179, 66, 0.5);
+  --m-ink: #fff4e8;
+  --m-muted: rgba(255, 244, 232, 0.58);
+  --m-one: #ff3d2e;
+  --m-two: #ffb22e;
+  --m-title-font: var(--font-display);
+}
+
+.mockup-blueprint {
+  --m-bg: #06101b;
+  --m-panel: rgba(81, 194, 255, 0.08);
+  --m-line: rgba(116, 231, 219, 0.5);
+  --m-ink: #f2fff9;
+  --m-muted: rgba(242, 255, 249, 0.62);
+  --m-one: #74e7db;
+  --m-two: #f7df87;
+  --m-title-font: var(--font-serif);
+}
+
+.mockup-blueprint .mockup-preview {
+  background:
+    linear-gradient(180deg, rgba(6, 16, 27, 0.18), rgba(6, 16, 27, 0.88)),
+    url("assets/theme-global-network.png") center / cover;
+}
+
+.mockup-cyberglass {
+  --m-bg: #070b13;
+  --m-panel: rgba(255, 255, 255, 0.09);
+  --m-line: rgba(199, 165, 255, 0.52);
+  --m-ink: #f8f5ff;
+  --m-muted: rgba(248, 245, 255, 0.62);
+  --m-one: #70f4ff;
+  --m-two: #c8a6ff;
+  --m-title-font: var(--font-serif);
+}
+
+.mockup-archive {
+  --m-bg: #eafaff;
+  --m-panel: rgba(255, 255, 255, 0.78);
+  --m-line: rgba(64, 132, 170, 0.42);
+  --m-ink: #1b2d3d;
+  --m-muted: rgba(27, 45, 61, 0.62);
+  --m-one: #4084aa;
+  --m-two: #79c9e7;
+  --m-title-font: var(--font-serif);
+}
+
+.mockup-archive .mockup-preview {
+  background:
+    linear-gradient(90deg, rgba(234, 250, 255, 0.22), rgba(234, 250, 255, 0.78)),
+    url("assets/theme-impact-clean-bg.svg") center / cover;
+}
+
+.mockup-console {
+  --m-bg: #04120f;
+  --m-panel: rgba(108, 255, 190, 0.08);
+  --m-line: rgba(108, 255, 190, 0.48);
+  --m-ink: #eafff5;
+  --m-muted: rgba(234, 255, 245, 0.6);
+  --m-one: #63ffbd;
+  --m-two: #e5ff89;
+  --m-title-font: var(--font-digital);
+}
+
+.mockup-console .mockup-preview {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(101, 255, 188, 0.14), transparent 0 16%, rgba(230, 255, 136, 0.08) 17% 24%, transparent 25%),
+    linear-gradient(30deg, rgba(101, 255, 188, 0.1) 12%, transparent 12.5% 87%, rgba(101, 255, 188, 0.1) 87.5%),
+    linear-gradient(150deg, rgba(230, 255, 136, 0.08) 12%, transparent 12.5% 87%, rgba(230, 255, 136, 0.08) 87.5%),
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(101, 255, 188, 0.1) 19px, transparent 20px 42px),
+    #03110d;
+  background-size: auto, 46px 80px, 46px 80px, auto, auto;
+}
+
+.mockup-classroom {
+  --m-bg: #101827;
+  --m-panel: rgba(226, 239, 255, 0.1);
+  --m-line: rgba(92, 224, 255, 0.34);
+  --m-ink: #fbfbf1;
+  --m-muted: rgba(251, 251, 241, 0.66);
+  --m-one: #5ce0ff;
+  --m-two: #e8c86e;
+  --m-title-font: var(--font-display);
+}
+
+.mockup-glitch {
+  --m-bg: #07050d;
+  --m-panel: rgba(255, 52, 224, 0.09);
+  --m-line: rgba(38, 255, 255, 0.54);
+  --m-ink: #ffffff;
+  --m-muted: rgba(255, 255, 255, 0.58);
+  --m-one: #22ffff;
+  --m-two: #ff34e0;
+  --m-title-font: var(--font-display);
+}
+
+.mockup-glitch .mockup-preview {
+  background:
+    linear-gradient(135deg, transparent 0 22%, rgba(255, 52, 224, 0.12) 22.4% 23%, transparent 23.5% 56%, rgba(34, 255, 255, 0.14) 56.4% 57%, transparent 57.5%),
+    linear-gradient(35deg, transparent 0 38%, rgba(34, 255, 255, 0.1) 38.4% 39%, transparent 39.5%),
+    repeating-conic-gradient(from 45deg, rgba(255, 52, 224, 0.08) 0deg 45deg, transparent 45deg 90deg, rgba(34, 255, 255, 0.07) 90deg 135deg, transparent 135deg 180deg),
+    #07050d;
+  background-size: auto, auto, 44px 44px, auto;
+}
+
+.mockup-editorial {
+  --m-bg: #f4efe5;
+  --m-panel: rgba(17, 23, 35, 0.08);
+  --m-line: rgba(28, 47, 77, 0.32);
+  --m-ink: #111723;
+  --m-muted: rgba(17, 23, 35, 0.58);
+  --m-one: #1c63a8;
+  --m-two: #d1603d;
+  --m-title-font: var(--font-accent);
+}
+
+.mockup-holo {
+  --m-bg: #081228;
+  --m-panel: rgba(216, 183, 255, 0.1);
+  --m-line: rgba(103, 226, 255, 0.5);
+  --m-ink: #f6f4ff;
+  --m-muted: rgba(246, 244, 255, 0.62);
+  --m-one: #67e2ff;
+  --m-two: #d8b7ff;
+  --m-title-font: var(--font-serif);
+}
+
+.mockup-warning .mockup-preview,
+.mockup-glitch .mockup-preview {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+}
+
+.mockup-cyberglass .mockup-body p,
+.mockup-cyberglass .mockup-body blockquote,
+.mockup-holo .mockup-body p,
+.mockup-holo .mockup-body blockquote {
+  backdrop-filter: blur(12px);
+}
+
+.mockup-console .mockup-body {
+  --m-columns: 0.72fr 1fr;
+}
+
+.mockup-editorial .mockup-preview {
+  background:
+    linear-gradient(90deg, transparent 31%, color-mix(in srgb, var(--m-one), transparent 78%) 31% 32%, transparent 32%),
+    var(--m-bg);
 }
 
 .design-swatch {
@@ -840,7 +1238,7 @@ blockquote {
   min-height: 60px;
   margin-top: 12px;
   padding: 16px 30px;
-  color: var(--bg);
+  color: var(--button-ink, var(--bg));
   font-family: var(--font-digital);
   font-size: 0.92rem;
   font-weight: 800;
@@ -848,13 +1246,13 @@ blockquote {
   text-transform: uppercase;
   text-decoration: none;
   pointer-events: auto;
-  border: 1px solid rgba(245, 199, 22, 0.85);
+  border: 1px solid color-mix(in srgb, var(--button-border, var(--warning)), transparent 14%);
   background:
-    linear-gradient(90deg, rgba(5, 8, 20, 0.16) 1px, transparent 1px),
-    linear-gradient(rgba(5, 8, 20, 0.12) 1px, transparent 1px),
-    linear-gradient(135deg, #f5c716, #fff4b8 48%, #d7b7ff);
+    linear-gradient(90deg, color-mix(in srgb, var(--button-ink, var(--bg)), transparent 84%) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--button-ink, var(--bg)), transparent 88%) 1px, transparent 1px),
+    linear-gradient(135deg, var(--button-start, var(--warning)), var(--button-mid, color-mix(in srgb, var(--warning), white 48%)) 48%, var(--button-end, var(--accent)));
   background-size: 16px 16px, 16px 16px, auto;
-  box-shadow: 0 0 38px rgba(245, 199, 22, 0.34), inset 0 0 18px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 38px color-mix(in srgb, var(--button-glow, var(--warning)), transparent 64%), inset 0 0 18px rgba(255, 255, 255, 0.3);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -862,13 +1260,13 @@ blockquote {
   content: "";
   position: absolute;
   inset: 7px;
-  border: 1px solid rgba(5, 8, 20, 0.32);
+  border: 1px solid color-mix(in srgb, var(--button-ink, var(--bg)), transparent 64%);
   pointer-events: none;
 }
 
 .citation-page-link:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 48px rgba(245, 199, 22, 0.46), inset 0 0 18px rgba(255, 255, 255, 0.36);
+  box-shadow: 0 0 48px color-mix(in srgb, var(--button-glow, var(--warning)), transparent 52%), inset 0 0 18px rgba(255, 255, 255, 0.36);
 }
 
 .citation-tabs {

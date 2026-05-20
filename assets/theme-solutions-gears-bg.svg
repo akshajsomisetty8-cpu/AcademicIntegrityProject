@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a5485"/>
+      <stop offset="0.52" stop-color="#1f3d75"/>
+      <stop offset="1" stop-color="#111c4d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="48%" cy="52%" r="58%">
+      <stop offset="0" stop-color="#9bd8ff" stop-opacity="0.42"/>
+      <stop offset="0.38" stop-color="#5aa8e8" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#10194a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="62" height="62" patternUnits="userSpaceOnUse">
+      <path d="M62 0H0V62" fill="none" stroke="#9bd8ff" stroke-opacity="0.1" stroke-width="1"/>
+      <circle cx="0" cy="0" r="2.4" fill="#dceeff" fill-opacity="0.18"/>
+    </pattern>
+    <g id="gear">
+      <circle r="78" fill="none" stroke="#dceeff" stroke-opacity="0.4" stroke-width="12"/>
+      <circle r="38" fill="none" stroke="#dceeff" stroke-opacity="0.28" stroke-width="8"/>
+      <g fill="#dceeff" fill-opacity="0.18">
+        <rect x="-9" y="-122" width="18" height="42" rx="4"/>
+        <rect x="-9" y="80" width="18" height="42" rx="4"/>
+        <rect x="80" y="-9" width="42" height="18" rx="4"/>
+        <rect x="-122" y="-9" width="42" height="18" rx="4"/>
+      </g>
+      <g transform="rotate(45)" fill="#dceeff" fill-opacity="0.15">
+        <rect x="-8" y="-116" width="16" height="36" rx="4"/>
+        <rect x="-8" y="80" width="16" height="36" rx="4"/>
+        <rect x="80" y="-8" width="36" height="16" rx="4"/>
+        <rect x="-116" y="-8" width="36" height="16" rx="4"/>
+      </g>
+    </g>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <rect width="2048" height="900" fill="url(#base)"/>
+  <rect width="2048" height="900" fill="url(#grid)"/>
+  <rect width="2048" height="900" fill="url(#glow)"/>
+
+  <g stroke="#dceeff" stroke-opacity="0.24" stroke-width="3" fill="none">
+    <path d="M90 622C292 488 435 532 612 382S924 120 1180 214s334 300 586 228"/>
+    <path d="M210 210c178 118 268 98 424 46s304-18 462 98 316 110 548-42"/>
+    <path d="M122 760c226-96 408-102 604 4s374 88 572-30 356-114 578 20"/>
+  </g>
+
+  <g fill="#dceeff" fill-opacity="0.46">
+    <circle cx="164" cy="596" r="8"/>
+    <circle cx="386" cy="506" r="9"/>
+    <circle cx="642" cy="380" r="10"/>
+    <circle cx="914" cy="174" r="8"/>
+    <circle cx="1192" cy="216" r="11"/>
+    <circle cx="1470" cy="392" r="8"/>
+    <circle cx="1768" cy="442" r="10"/>
+    <circle cx="312" cy="258" r="7"/>
+    <circle cx="742" cy="236" r="10"/>
+    <circle cx="1096" cy="354" r="8"/>
+    <circle cx="1512" cy="356" r="11"/>
+    <circle cx="280" cy="760" r="9"/>
+    <circle cx="762" cy="762" r="8"/>
+    <circle cx="1268" cy="714" r="9"/>
+    <circle cx="1704" cy="740" r="8"/>
+  </g>
+
+  <g opacity="0.72">
+    <use href="#gear" x="760" y="360" transform="scale(1.25)"/>
+    <use href="#gear" x="956" y="514" transform="scale(0.88) rotate(18 956 514)"/>
+    <use href="#gear" x="598" y="514" transform="scale(0.7) rotate(-13 598 514)"/>
+    <use href="#gear" x="1110" y="306" transform="scale(0.58) rotate(26 1110 306)"/>
+  </g>
+
+  <g filter="url(#soft)" opacity="0.5">
+    <path d="M0 160C360 44 646 94 924 154c330 70 566 16 1124-106v900H0Z" fill="#7cc9ff" fill-opacity="0.09"/>
+    <path d="M0 760c322-88 668-74 984-28 264 38 534 36 1064-70v238H0Z" fill="#9bd8ff" fill-opacity="0.11"/>
+  </g>
+</svg>

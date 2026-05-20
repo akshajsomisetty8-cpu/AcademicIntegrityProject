@@ -71,8 +71,12 @@ main {
   padding: clamp(24px, 4vw, 42px);
   place-items: start;
   background:
+    linear-gradient(30deg, rgba(138, 162, 255, 0.09) 12%, transparent 12.5% 87%, rgba(138, 162, 255, 0.09) 87.5%),
+    linear-gradient(150deg, rgba(105, 227, 255, 0.07) 12%, transparent 12.5% 87%, rgba(105, 227, 255, 0.07) 87.5%),
+    linear-gradient(30deg, rgba(133, 255, 184, 0.06) 12%, transparent 12.5% 87%, rgba(133, 255, 184, 0.06) 87.5%),
     linear-gradient(90deg, rgba(138, 162, 255, 0.1), transparent),
     linear-gradient(180deg, rgba(16, 19, 28, 0.92), rgba(8, 10, 15, 0.88));
+  background-size: 44px 76px, 44px 76px, 44px 76px, auto, auto;
 }
 
 .compass-frame::before,

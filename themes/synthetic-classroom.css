@@ -1,0 +1,121 @@
+:root {
+  --bg: #101827;
+  --panel: rgba(16, 28, 45, 0.86);
+  --panel-strong: rgba(22, 38, 59, 0.95);
+  --line: rgba(92, 224, 255, 0.22);
+  --line-strong: #5ce0ff;
+  --ink: #fffbed;
+  --muted: #d6d8d6;
+  --accent: #5ce0ff;
+  --warning: #e8c86e;
+  --magenta: #91b7ff;
+  --shadow: 0 0 42px rgba(92, 224, 255, 0.11);
+  --font-display: "Montserrat";
+  --font-serif: "Merriweather";
+  --font-ui: "Montserrat";
+  --font-body: "Inter";
+  --font-digital: "Anta";
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(92, 224, 255, 0.13), transparent 32%),
+    radial-gradient(circle at 88% 28%, rgba(232, 200, 110, 0.12), transparent 28%),
+    linear-gradient(rgba(92, 224, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 224, 255, 0.035) 1px, transparent 1px),
+    #101827;
+  background-size: auto, auto, 64px 64px, 64px 64px, auto;
+}
+
+.site-header,
+.single-panel,
+.main-panel,
+.quote-panel,
+.feature-grid,
+.feature-card,
+.page-heading,
+.hero {
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(92, 224, 255, 0.07), rgba(232, 200, 110, 0.05)),
+    var(--panel);
+}
+
+h1 {
+  font-family: var(--font-display);
+}
+
+.content-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 0.7fr);
+}
+
+.quote-panel {
+  border-color: rgba(232, 200, 110, 0.34);
+}
+
+body[data-page-index="0"] {
+  --accent: #64dfff;
+  --warning: #335f94;
+  --magenta: #a6d9ff;
+  --line-strong: #64dfff;
+  --page-image: url("../assets/theme-ai-corridor.png");
+  --page-overlay: linear-gradient(90deg, rgba(7, 16, 31, 0.6), rgba(100, 223, 255, 0.1), rgba(7, 16, 31, 0.86));
+}
+
+body[data-page-index="1"] {
+  --accent: #20eaff;
+  --warning: #c65cff;
+  --magenta: #ff65d6;
+  --line-strong: #20eaff;
+  --page-image: url("../assets/theme-ai-mosaic.png");
+  --page-overlay: linear-gradient(90deg, rgba(9, 8, 27, 0.64), rgba(32, 234, 255, 0.12), rgba(9, 8, 27, 0.88));
+}
+
+body[data-page-index="2"] {
+  --accent: #73ddff;
+  --warning: #ffad85;
+  --magenta: #416f96;
+  --line-strong: #73ddff;
+  --page-image: url("../assets/theme-robot-library.png");
+  --page-overlay: linear-gradient(90deg, rgba(9, 21, 34, 0.6), rgba(115, 221, 255, 0.1), rgba(9, 21, 34, 0.88));
+}
+
+body[data-page-index="3"] {
+  --accent: #7ba7ff;
+  --warning: #f6fbff;
+  --magenta: #91c7ff;
+  --line-strong: #f6fbff;
+  --page-image: url("../assets/theme-solutions-gears-bg.svg");
+  --page-overlay: linear-gradient(90deg, rgba(23, 52, 92, 0.62), rgba(246, 251, 255, 0.1), rgba(23, 52, 92, 0.88));
+}
+
+body[data-page-index="4"] {
+  --accent: #5ce0ff;
+  --warning: #b985ff;
+  --magenta: #ff78d8;
+  --line-strong: #5ce0ff;
+  --button-start: #5ce0ff;
+  --button-mid: #b985ff;
+  --button-end: #ff78d8;
+  --button-ink: #101827;
+  --button-glow: #5ce0ff;
+  --page-image: url("../assets/theme-digital-classroom.png");
+  --page-overlay: linear-gradient(90deg, rgba(16, 24, 39, 0.52), rgba(185, 133, 255, 0.16), rgba(16, 24, 39, 0.88));
+}
+
+body[data-page-index="5"] {
+  --accent: #5ce0ff;
+  --warning: #e8c86e;
+  --magenta: #91b7ff;
+  --page-image: none;
+  --page-overlay: radial-gradient(circle at 50% 50%, rgba(92, 224, 255, 0.14), transparent 28%);
+}
+
+.hero,
+.page-heading {
+  background:
+    var(--page-overlay),
+    linear-gradient(180deg, rgba(16, 24, 39, 0.18), rgba(16, 24, 39, 0.88)),
+    var(--page-image) center / cover,
+    #101827;
+}

@@ -1,0 +1,68 @@
+:root {
+  --bg: #eafaff;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(64, 132, 170, 0.24);
+  --line-strong: #4084aa;
+  --ink: #1b2d3d;
+  --muted: #496474;
+  --accent: #4084aa;
+  --warning: #163852;
+  --magenta: #79c9e7;
+  --shadow: 0 20px 54px rgba(64, 132, 170, 0.12);
+  --font-display: "Merriweather";
+  --font-serif: "Merriweather";
+  --font-ui: "Montserrat";
+  --font-body: "Inter";
+  --font-digital: "Anta";
+}
+
+body {
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(64, 132, 170, 0.18), transparent 25%),
+    linear-gradient(rgba(64, 132, 170, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 132, 170, 0.05) 1px, transparent 1px),
+    #eafaff;
+  background-size: auto, 78px 78px, 78px 78px, auto;
+}
+
+.site-header,
+.single-panel,
+.main-panel,
+.quote-panel,
+.feature-grid,
+.feature-card,
+.page-heading,
+.hero {
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(64, 132, 170, 0.08), transparent 34%),
+    var(--panel);
+}
+
+.hero,
+.page-heading {
+  background:
+    linear-gradient(90deg, rgba(234, 250, 255, 0.22), rgba(234, 250, 255, 0.78)),
+    url("../assets/theme-impact-clean-bg.svg") center / cover;
+}
+
+h1,
+h2 {
+  font-family: var(--font-serif);
+}
+
+p,
+li {
+  line-height: 1.86;
+}
+
+.quote-panel {
+  border-left: 1px solid var(--line-strong);
+  border-right: 1px solid var(--line-strong);
+}
+
+.quote-panel blockquote + p {
+  color: #163852;
+  background: rgba(255, 255, 255, 0.78);
+}
