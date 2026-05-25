@@ -5,6 +5,22 @@
   var currentFile = window.location.pathname.split("/").pop() || "index.html";
   var pageIndex = Math.max(0, pages.indexOf(currentFile));
   var isContentPage = pages.indexOf(currentFile) !== -1;
+  var storage = {
+    get: function (key) {
+      try {
+        return window.localStorage.getItem(key);
+      } catch (error) {
+        return null;
+      }
+    },
+    set: function (key, value) {
+      try {
+        window.localStorage.setItem(key, value);
+      } catch (error) {
+        return null;
+      }
+    }
+  };
   var themes = {
     neural: "themes/neural-circuit.css",
     terminal: "themes/terminal-core.css",
@@ -18,7 +34,8 @@
     classroom: "themes/synthetic-classroom.css",
     glitch: "themes/glitch-persuasion.css",
     editorial: "themes/editorial-tech.css",
-    refined: "themes/holo-refined.css"
+    refined: "themes/holo-refined.css",
+    claude: "themes/claude-like-editorial.css"
   };
 
   document.body.dataset.pageIndex = String(pageIndex);
@@ -27,15 +44,66 @@
   document.body.style.setProperty("--page-ratio", pages.length > 1 ? pageIndex / (pages.length - 1) : 0);
 
   if (isContentPage) {
-    window.localStorage.setItem("lastContentPage", currentFile);
+    storage.set("lastContentPage", currentFile);
   }
 
   if (themes[design]) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = themes[design] + "?v=55";
+    link.href = themes[design] + "?v=76";
     link.id = "theme-stylesheet";
     document.head.appendChild(link);
+
+    var sharedRefinements = document.createElement("style");
+    sharedRefinements.id = "shared-theme-refinements";
+    sharedRefinements.textContent = `
+      .hero {
+        min-height: min(430px, calc(54vh - 42px)) !important;
+        padding: clamp(28px, 4.4vw, 52px) clamp(16px, 3vw, 36px) !important;
+      }
+
+      .hero h1 {
+        max-width: 780px !important;
+        font-size: clamp(2.15rem, 4.7vw, 4.95rem) !important;
+        line-height: 1.08 !important;
+      }
+
+      .hero h1 span:first-child::after,
+      .compass-frame::before,
+      .compass-frame::after,
+      .hero::before,
+      .hero::after,
+      .hero .ai-core {
+        display: none !important;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        align-items: stretch !important;
+      }
+
+      .feature-card {
+        min-height: 486px !important;
+        transform: none !important;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-7px) !important;
+      }
+
+      @media (max-width: 980px) {
+        .feature-grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        .feature-card,
+        .feature-card:hover {
+          min-height: auto !important;
+          transform: none !important;
+        }
+      }
+    `;
+    document.head.appendChild(sharedRefinements);
 
     document.querySelectorAll('a[href*=".html"]').forEach(function (anchor) {
       var url = new URL(anchor.getAttribute("href"), window.location.href);
@@ -45,7 +113,7 @@
   }
 
   if (currentFile === "designs.html") {
-    var returnPage = params.get("from") || window.localStorage.getItem("lastContentPage") || "problem.html";
+    var returnPage = params.get("from") || storage.get("lastContentPage") || "problem.html";
     if (pages.indexOf(returnPage) === -1) returnPage = "problem.html";
     document.querySelectorAll(".mockup-card[data-design]").forEach(function (anchor) {
       anchor.setAttribute("href", returnPage + "?design=" + anchor.dataset.design);
@@ -87,6 +155,7 @@
       dot.className = "route-dot";
       if (index <= pageIndex) dot.classList.add("is-lit");
       if (index === pageIndex) dot.classList.add("is-current");
+      if (index > pageIndex) dot.classList.add("is-after-current");
       dot.setAttribute("aria-label", page.replace(".html", ""));
       rail.appendChild(dot);
     });
