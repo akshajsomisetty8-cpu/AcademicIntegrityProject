@@ -696,6 +696,10 @@ h3 {
   text-shadow: 0 0 20px rgba(245, 199, 22, 0.42);
 }
 
+.post-list-gap {
+  margin-top: clamp(56px, 5vw, 76px);
+}
+
 .quote-panel {
   border-color: rgba(245, 199, 22, 0.28);
   background:
@@ -714,6 +718,29 @@ h3 {
 .quote-panel-inline blockquote {
   font-size: clamp(1.04rem, 1.45vw, 1.34rem);
   line-height: 1.38;
+}
+
+.compact-quote {
+  margin: 16px 0 20px;
+  padding: clamp(14px, 2vw, 22px);
+  min-height: 0;
+  height: auto;
+}
+
+.content-grid .compact-quote {
+  height: auto;
+  min-height: 0;
+  margin: 16px 0 20px;
+}
+
+.compact-quote blockquote {
+  margin-bottom: 14px;
+  font-size: clamp(1.04rem, 1.45vw, 1.34rem);
+  line-height: 1.38;
+}
+
+.compact-quote blockquote + p {
+  margin-bottom: 0;
 }
 
 .stat-visual {
