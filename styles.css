@@ -913,7 +913,7 @@ body blockquote {
   font-weight: 800;
   letter-spacing: 0.08em;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
   text-shadow: 0 0 14px color-mix(in srgb, var(--accent), transparent 52%);
 }
 
